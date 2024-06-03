@@ -82,7 +82,7 @@
 <br/><br/>
   - Click on traning, this process might takes up to 20 minutes.
      <br/><br/>
-   ![alt text](/Images_for_readme/model_choice.PNG)
+   ![alt text](/Images_for_readme/100.PNG)
   <br/><br/><br/><br/>
 ## Deployment
   <strong> 1. On the left tab, navigate to Deployment and change deployment option to Arduino library. </strong>
