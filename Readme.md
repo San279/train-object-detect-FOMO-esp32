@@ -94,10 +94,11 @@ Click on add learning block and select the first option, then save the impulse.
   <br/><br/><br/><br/>
 ## Deployment
   <strong> 1. On the left tab, navigate to Deployment and change deployment option to Arduino library. </strong>
-    <br/> <br/><br/>
+    <br/> <br/>
    ![alt text](/Images_for_readme/deployment1.PNG)
-  <strong> 2. change target option to Esp32. </strong>
-   <br/> <br/><br/>
+   <br/><br/><br/>
+  <strong> 2. Change target option to Esp32. </strong>
+   <br/> <br/>
    ![alt text](/Images_for_readme/deployment2.PNG)
    <br/> <br/><br/>
-  <strong> 3. Click on Build to start downloading the library, and you're done. I've created two libraries for testing the model, please visit [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) for streaming inference result or [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) for displaying inference results to TFT screens. 
+  <strong> 3. Click on Build to start downloading the library, and you're done. I've created two libraries for testing the model in real time, please visit [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) for streaming inference result or [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) for displaying inference results to TFT screens. 
