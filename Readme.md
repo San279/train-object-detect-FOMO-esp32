@@ -49,12 +49,12 @@
  <br/> <br/>
  ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
-4. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. <strong> Click on save parameters to go next. </strong>
+3. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. <strong> Click on save parameters to go next. </strong>
 <br/>  <br/>
  ![alt text](/Images_for_readme/rgb.PNG)
 <br/> <br/>
 <strong> After selecting the features, the page will direct you to generate feature tab, click on generate feature and you will see the graph on the right side of the page. </strong>
-</br>
+<br/> <br/>
 This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes when traning which will greatly reduce the accuracy. Thus images that overlaped between two classes has to be removed.
  <br/>
  ![alt text](/Images_for_readme/feature_unedit.PNG)
