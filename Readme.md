@@ -41,19 +41,20 @@
  3. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode. FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame. Experiment with this feature as you will, as a demonstration of process we will be traning two models with different input sizes, 46X46(half the dimension of the dataset) and 96X96(equal to dataset's dimension) to showcase it's difference in accuracy and speed.<br/> <br/> <br/> <br/>
  ![alt text](/Images_for_readme/input_size.PNG)
 <br/> <br/><br/> 
- Click on add a processing block and select the only option <br/> <br/>
+ <strong> Click on add a processing block and select the only option. </strong> <br/> <br/>
  ![alt text](/Images_for_readme/add_processing.PNG)
 <br/><br/> <br/>
- Click on add learning block and select the first option. <br/> <br/>
+ <strong> Click on add learning block and select the first option. </strong><br/> <br/>
  ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
 Save the impulse
 
 <br/><br/> <br/>
 ## Deployment
-  1. On the left tab, navigate to Deployment and change deployment option to Arduino library.
+  <strong> 1. On the left tab, navigate to Deployment and change deployment option to Arduino library. </strong>
     <br/> <br/><br/>
    ![alt text](/Images_for_readme/deployment1.PNG)
-  2. change target option to Esp32
+  <strong> 2. change target option to Esp32. </strong>
    <br/> <br/><br/>
    ![alt text](/Images_for_readme/deployment2.PNG)
+  <strong> 3. Click on Build to start downloading the library, and you're done. I've created two libraries for testing the model, please visit [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) for streaming inference result or [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) for displaying inference results to TFT screens. 
