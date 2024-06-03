@@ -49,7 +49,7 @@
  <br/> <br/>
  ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
-4. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. Click on save parameters to go next.
+4. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. <strong> Click on save parameters to go next. </strong>
 <br/>  <br/>
  ![alt text](/Images_for_readme/rgb.PNG)
 <br/> <br/>
