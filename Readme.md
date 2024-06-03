@@ -6,7 +6,7 @@
  - OV camera series.
  - Webcam (optional).
  - Edge Impulse account(free).
-<br/>
+<br/> <br/>
 ## Before we begin
   Register a free account in Edge Impulse, and create a new project. 
   <br/> <br/>
