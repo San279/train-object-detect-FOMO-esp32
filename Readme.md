@@ -28,13 +28,9 @@
 ![alt text](/Images_for_readme/object_detection_tab..PNG)
   <br/> <br/>  <br/> <br/> 
 ## Training
-  1. Label each images into classes. Keep in mind that non square images will be crop off during this process. <br/> <br/>
-```diff
-- Images with non equal dimension 320 X 240
-   ![alt text](/Images_for_readme/folder_directory.PNG)
-+ text in green
-```
- - Images with non equal dimension 320 X 240 <br/> 
+  1. Label each images into classes. Keep in mind that non square images will be crop off during this process.
+     <br/> <br/>
+<strong> - Images with non equal dimension 320 X 240. </strong> <br/> 
    ![alt text](/Images_for_readme/folder_directory.PNG)
     <br/> <br/>
    <strong>- Images with equal dimension 96 X 96. </strong><br/> 
