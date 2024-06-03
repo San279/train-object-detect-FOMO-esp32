@@ -55,14 +55,14 @@
 <br/> <br/>
 <strong> After selecting the features, the page will direct you to generate feature tab, click on generate feature and you will see the graph on the right side of the page. </strong>
 <br/> <br/>
-4. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be removed. <br/>
+4. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be removed.
+ <br/>
  ![alt text](/Images_for_readme/feature_unedit.PNG)
 <br/> <br/>
 <strong> The ideal graph should look like this. <strong/>
-<br/>
+<br/> <br/>
  ![alt text](/Images_for_readme/feature_edited.PNG)
 <br/><br/> <br/>
-
 
 <br/><br/> <br/>
 ## Deployment
