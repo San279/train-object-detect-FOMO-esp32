@@ -15,7 +15,7 @@
 ## Data collection
   1. Collecting data from Esp32 can be a tediuos. Luckily, you can download and run the scripted that I've created [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) or use Webcam interface in Edge impulse.
      <br/>
-  - The best results of this neral network is obtained atleast 70 images per class and 10% of background(other) images. To put in perspective, training a model to count 2 fingers requires 70 images of one, another 60 images of two, and atleast 20-30 images of other fingers or object look alike.
+  - The best results of this network is obtained atleast 70 images per class and 10% of background(other) images. To put in perspective, training a model to count 2 fingers requires 70 images of one, another 70 images of two, and atleast 20-30 images of other fingers or object look alike.
     <br/>
   - Images should has equal width and height otherwise it's width will be crop off when uploading to Edge Impulse. Here is snapshot of [webserver](https://github.com/San279/camera-webserver-for-esp32S3) used for data collections. Each images is 96X96 in dimension. 
 <br/> <br/>   
@@ -46,7 +46,7 @@
     <br/>
     - FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame.
     <br/>
-    - Experiment with this feature as you will, I will be using 96 width and 96 height.
+    * Experiment with this feature as you will, I will be using 96 width and 96 height.
  <br/> <br/>
  ![alt text](/Images_for_readme/input_size.PNG)
 <br/> <br/>
