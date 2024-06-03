@@ -28,14 +28,19 @@
 ![alt text](/Images_for_readme/object_detection_tab..PNG)
   <br/> <br/>  <br/> <br/> 
 ## Training
-  1. Label each images into classes. Keep in mind that non square images will be crop off during this process. <br/> <br/>  
-   <strong>- Images with non equal dimension 320 X 240. </strong> <br/> 
+  1. Label each images into classes. Keep in mind that non square images will be crop off during this process. <br/> <br/>
+```diff
+- Images with non equal dimension 320 X 240
+   ![alt text](/Images_for_readme/folder_directory.PNG)
++ text in green
+```
+ - Images with non equal dimension 320 X 240 <br/> 
    ![alt text](/Images_for_readme/folder_directory.PNG)
     <br/> <br/>
    <strong>- Images with equal dimension 96 X 96. </strong><br/> 
    ![alt text](/Images_for_readme/folder_directory.PNG)
 <br/> <br/> <br/>
- 2. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode. FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame. Experiment with this feature as you will, as a demonstration of process we will be traning two models with different input sizes, 46X46(half the dimension of the dataset) and 96X96(equal to dataset's dimension) to showcase it's difference in accuracy and speed.<br/> <br/> <br/> <br/>
+ 3. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode. FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame. Experiment with this feature as you will, as a demonstration of process we will be traning two models with different input sizes, 46X46(half the dimension of the dataset) and 96X96(equal to dataset's dimension) to showcase it's difference in accuracy and speed.<br/> <br/> <br/> <br/>
  ![alt text](/Images_for_readme/folder_directory.PNG)
 <br/> <br/><br/> 
  Click on Add a processing block and select the only option <br/> <br/>
