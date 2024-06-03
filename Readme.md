@@ -28,7 +28,7 @@
 ![alt text](/Images_for_readme/object_detection_tab..PNG)
   <br/> <br/>  <br/> <br/> 
 ## Training
-  1. Label each images into classes. Keep in mind that images with non equal dimension will be crop off during this process, which is why I've equal image dimension.
+  1. On the top of the page, navigate to labeling queue and add label to each images. Keep in mind that images with non equal dimension will be crop off during this process, which is why I've equal image dimension.
      <br/> <br/>
 <strong> - Images with non equal dimension 320 X 240, notice the black shade on each sides of the image indicates that the shaded part will be crop off.</strong>
  <br/> <br/>
@@ -48,3 +48,12 @@
  ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
 Save the impulse
+
+<br/><br/> <br/>
+## Deployment
+  1. On the left tab, navigate to Deployment and change deployment option to Arduino library.
+    <br/> <br/><br/>
+   ![alt text](/Images_for_readme/deployment1.PNG)
+  2. change target option to Esp32
+   <br/> <br/><br/>
+   ![alt text](/Images_for_readme/deployment2.PNG)
