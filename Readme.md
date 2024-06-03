@@ -33,7 +33,7 @@
 ## Training
   <strong> 1. On the top of the page, navigate to labeling queue and add label to each images. Keep in mind that images with non equal dimension will be crop off during this process, which is why I've equal image dimension. </strong>
      <br/> <br/>
-Images with non equal dimension 320 X 240, notice the black shade on each sides of the image indicates that the shaded part will be crop off.
+Images with non equal dimension 320 X 240, notice the black shade on each sides of the image indicates that those parts will be crop off.
  <br/> <br/>
    ![alt text](/Images_for_readme/label_320.PNG)
     <br/> <br/>
