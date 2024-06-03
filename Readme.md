@@ -28,21 +28,21 @@
 ![alt text](/Images_for_readme/object_detection_tab..PNG)
   <br/> <br/>  <br/> <br/> 
 ## Training
-  1. Label each images into classes. Keep in mind that non square images will be crop off during this process.
+  1. Label each images into classes. Keep in mind that non square images will be crop off during this process, which is why I've used 96X96 image dimension.
      <br/> <br/>
 <strong> - Images with non equal dimension 320 X 240. </strong> <br/> 
-   ![alt text](/Images_for_readme/folder_directory.PNG)
+   ![alt text](/Images_for_readme/label_320.PNG)
     <br/> <br/>
    <strong>- Images with equal dimension 96 X 96. </strong><br/> 
-   ![alt text](/Images_for_readme/folder_directory.PNG)
+   ![alt text](/Images_for_readme/label_96.PNG)
 <br/> <br/> <br/>
  3. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode. FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame. Experiment with this feature as you will, as a demonstration of process we will be traning two models with different input sizes, 46X46(half the dimension of the dataset) and 96X96(equal to dataset's dimension) to showcase it's difference in accuracy and speed.<br/> <br/> <br/> <br/>
- ![alt text](/Images_for_readme/folder_directory.PNG)
+ ![alt text](/Images_for_readme/input_size.PNG)
 <br/> <br/><br/> 
- Click on Add a processing block and select the only option <br/> <br/>
- ![alt text](/Images_for_readme/folder_directory.PNG)
+ Click on add a processing block and select the only option <br/> <br/>
+ ![alt text](/Images_for_readme/add_processing.PNG)
 <br/><br/> <br/>
- Click on Add learning block and select the first option. <br/> <br/>
- ![alt text](/Images_for_readme/folder_directory.PNG)
+ Click on add learning block and select the first option. <br/> <br/>
+ ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
 Save the impulse
