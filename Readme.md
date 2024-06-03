@@ -43,7 +43,7 @@
    ![alt text](/Images_for_readme/label_96.PNG)
 <br/> <br/> <br/>
  2. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode.
-    <br/>
+    <br/><br/>
     - FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame.
     <br/>
     - 96 X 96 will be used for this project.
