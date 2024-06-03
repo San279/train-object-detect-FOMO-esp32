@@ -44,7 +44,7 @@
 <br/> <br/> <br/>
  2. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode.
     <br/>
-    - FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame
+    - FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame.
     <br/>
     - Experiment with this feature as you will, I will be using 96 width and 96 height.
  <br/> <br/>
