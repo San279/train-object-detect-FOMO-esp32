@@ -13,7 +13,11 @@
   ![alt text](/Images_for_readme/create_new_project.PNG)
 <br/>
 ## Data collection
-  1. Collecting data from Esp32 can be a tediuos. Luckily, you can download and run the scripted that I've created [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) or use Webcam interface in Edge impulse. It is highly recomended that the training dataset contains images from Esp32 camera rather than typical Web camera. The best results of this neral network is obtained atleast 60 images per class and 10% of background(other) images. To put in perspective, training a model to count 2 fingers requires 60 images one, another 60 images of two, and atleast 20 images of other fingers or object look alike. Images should has equal width and height otherwise it's width will be crop off when uploading to Edge Impulse. Here is snapshot of [webserver](https://github.com/San279/camera-webserver-for-esp32S3) used for data collections. Each images is 96X96 in dimension.
+  1. Collecting data from Esp32 can be a tediuos. Luckily, you can download and run the scripted that I've created [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) or use Webcam interface in Edge impulse.
+     <br/>
+  - The best results of this neral network is obtained atleast 70 images per class and 10% of background(other) images. To put in perspective, training a model to count 2 fingers requires 70 images of one, another 60 images of two, and atleast 20-30 images of other fingers or object look alike.
+    <br/>
+  - Images should has equal width and height otherwise it's width will be crop off when uploading to Edge Impulse. Here is snapshot of [webserver](https://github.com/San279/camera-webserver-for-esp32S3) used for data collections. Each images is 96X96 in dimension. 
 <br/> <br/>   
   ![alt text](/Images_for_readme/webserver.PNG)
 <br/> <br/> <br/>
@@ -38,7 +42,11 @@
   <br/> <br/>
    ![alt text](/Images_for_readme/label_96.PNG)
 <br/> <br/> <br/>
- 2. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode. FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame. Experiment with this feature as you will, as a demonstration of process we will be traning two models with different input sizes, 46X46(half the dimension of the dataset) and 96X96(equal to dataset's dimension) to showcase it's difference in accuracy and speed.
+ 2. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode.
+    <br/>
+    - FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame
+    <br/>
+    - Experiment with this feature as you will, I will be using 96 width and 96 height.
  <br/> <br/>
  ![alt text](/Images_for_readme/input_size.PNG)
 <br/> <br/>
@@ -49,13 +57,13 @@
  <br/> <br/>
  ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
-3. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. <strong> Click on save parameters to go next. </strong>
+4. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. <strong> Click on save parameters to go next. </strong>
 <br/>  <br/>
  ![alt text](/Images_for_readme/rgb.PNG)
 <br/> <br/>
 <strong> After selecting the features, the page will direct you to generate feature tab, click on generate feature and you will see the graph on the right side of the page. </strong>
 <br/> <br/>
-4. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be removed. <br/>
+5. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be removed. <br/>
  ![alt text](/Images_for_readme/feature_unedit.PNG)
 <br/> <br/>
 <strong> The ideal graph should look like this. </strong>
