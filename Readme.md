@@ -60,17 +60,30 @@
 <br/> <br/>
 <strong> After selecting the features, the page will direct you to generate feature tab, click on generate feature and you will see the graph on the right side of the page. </strong>
 <br/> <br/>
-5. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be removed. <br/>
+5. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be deleted. <br/>
  ![alt text](/Images_for_readme/feature_unedit.PNG)
 <br/> <br/>
-<strong> The ideal graph should look like this. </strong>
+- After deleting and adding more images, the two classes should be seperated like this.
  <br/> <br/>
  ![alt text](/Images_for_readme/feature_edited.PNG)
 <br/><br/> <br/>
 6. On the left panel select Object detection. These are the settings that can be customized.
-  - Traning cycles indicates the number of epoch the model will go through, I've found that it is trivial to set it more than 80.
-  - 
-<br/><br/> <br/>
+  - Traning cycles indicates the number of epoch the model will go through, I've found that it is trivial to set it more than 80. I will be using 25 cycles for this project.
+  - Data augentation, multiplies amount of your dataset significantly. leave this on as default.
+  - Learning rate, determines how fast the model learn the features, this is best leave as just it is.
+  - Validation set size, also best to leave this as default as well.
+  - batch size, determines samples that will be propagated through the traning process e.g. if it's set 8 then the model will train on 1-8 images, then on the next cycle it will go through 9-16 and so forth. Batch size should be in the power of 2^n, e.g. 4, 8, 16, 32, 64, and etc. I've found that on small datasets 8 and 16 yield the best result. The batch size of 8 will be used for this project. 
+<br/><br/>
+ ![alt text](/Images_for_readme/best_setting.PNG)
+<br/><br/>
+  - Choose the model, as of now, only two FOMO models are avaiable. I will be using FOMO 0.35 for this project.
+<br/><br/>
+   ![alt text](/Images_for_readme/model_choice.PNG)
+<br/><br/>
+  - Click on traning, this process might takes up to 20 minutes.
+     <br/><br/>
+   ![alt text](/Images_for_readme/model_choice.PNG)
+  <br/><br/><br/><br/>
 ## Deployment
   <strong> 1. On the left tab, navigate to Deployment and change deployment option to Arduino library. </strong>
     <br/> <br/><br/>
@@ -78,4 +91,5 @@
   <strong> 2. change target option to Esp32. </strong>
    <br/> <br/><br/>
    ![alt text](/Images_for_readme/deployment2.PNG)
+   <br/> <br/><br/>
   <strong> 3. Click on Build to start downloading the library, and you're done. I've created two libraries for testing the model, please visit [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) for streaming inference result or [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) for displaying inference results to TFT screens. 
