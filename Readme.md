@@ -8,12 +8,12 @@
  - Edge Impulse account(free).
 <br/> <br/>
 ## Before we begin
-  Register a free account in Edge Impulse, and create a new project. 
+  <strong> Register a free account in Edge Impulse, and create a new project. </strong> 
   <br/> <br/>
   ![alt text](/Images_for_readme/create_new_project.PNG)
 <br/>
 ## Data collection
-  1. Collecting data from Esp32 can be a tediuos. Luckily, you can download and run the scripted that I've created [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) or use Webcam interface in Edge impulse.
+  <strong> 1. Collecting data from Esp32 can be a tediuos. Luckily, you can download and run the scripted that I've created [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) or use Webcam interface in Edge impulse. </strong>
      <br/>
   - The best results of this network is obtained atleast 70 images per class and 10% of background(other) images. To put in perspective, training a model to count 2 fingers requires 70 images of one, another 70 images of two, and atleast 20-30 images of other fingers or object look alike.
   - Images should has equal width and height otherwise it's width will be crop off when uploading to Edge Impulse. Here is snapshot of [webserver](https://github.com/San279/camera-webserver-for-esp32S3) used for data collections. Each images is 96 X 96 in dimension. 
@@ -31,43 +31,45 @@
 ![alt text](/Images_for_readme/object_detection_tab..PNG)
   <br/> <br/>  <br/> <br/> 
 ## Training
-  1. On the top of the page, navigate to labeling queue and add label to each images. Keep in mind that images with non equal dimension will be crop off during this process, which is why I've equal image dimension.
+  <strong> 1. On the top of the page, navigate to labeling queue and add label to each images. Keep in mind that images with non equal dimension will be crop off during this process, which is why I've equal image dimension. </strong>
      <br/> <br/>
-<strong> Images with non equal dimension 320 X 240, notice the black shade on each sides of the image indicates that the shaded part will be crop off.</strong>
+Images with non equal dimension 320 X 240, notice the black shade on each sides of the image indicates that the shaded part will be crop off.
  <br/> <br/>
    ![alt text](/Images_for_readme/label_320.PNG)
     <br/> <br/>
-   <strong> Images with equal dimension 96 X 96. </strong>
+   Images with equal dimension 96 X 96.
   <br/> <br/>
    ![alt text](/Images_for_readme/label_96.PNG)
 <br/> <br/> <br/>
- 2. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode.
+ <strong> 2. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode. </strong>
     <br/><br/>
     - Edge Impulse reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame.
  <br/> <br/>
  ![alt text](/Images_for_readme/input_size.PNG)
 <br/> <br/>
- <strong> Click on add a processing block and select the only option. </strong> <br/> <br/>
+Click on add a processing block and select the only option.
+<br/> <br/>
  ![alt text](/Images_for_readme/add_processing.PNG)
 <br/><br/>
- <strong> Click on add learning block and select the first option, then save the impulse. </strong>
+Click on add learning block and select the first option, then save the impulse.
  <br/> <br/>
  ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
-4. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. <strong> Click on save parameters to go next. </strong>
+<strong> 4. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. Click on save parameters to proceed. </strong>
 <br/>  <br/>
  ![alt text](/Images_for_readme/rgb.PNG)
 <br/> <br/>
-<strong> After selecting the features, the page will direct you to generate feature tab, click on generate feature and you will see the graph on the right side of the page. </strong>
+ After selecting the features, the page will direct you to generate feature tab, <strong> click on generate feature and you will see the graph on the right side of the page. </strong>
 <br/> <br/>
-5. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be deleted. <br/>
+<strong> 5. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be deleted. </strong>
+<br/><br/>
  ![alt text](/Images_for_readme/feature_unedit.PNG)
 <br/> <br/>
 - After deleting and adding more images, the two classes should be seperated like this.
  <br/> <br/>
  ![alt text](/Images_for_readme/feature_edited.PNG)
 <br/><br/> <br/>
-6. On the left panel select Object detection. These are the settings that can be customized.
+<strong> 6. On the left panel select Object detection. These are the settings that can be customized. </strong>
   - Traning cycles indicates the number of epoch the model will go through, I've found that it is trivial to set it more than 80. I will be using 25 cycles for this project.
   - Data augentation, multiplies amount of your dataset significantly. leave this on as default.
   - Learning rate, determines how fast the model learn the features, this is best leave as just it is.
@@ -80,9 +82,15 @@
 <br/><br/>
    ![alt text](/Images_for_readme/model_choice.PNG)
 <br/><br/>
-  - Click on traning, this process might takes up to 20 minutes.
+  - Start traning the model, this process might takes up to 20 minutes.
      <br/><br/>
    ![alt text](/Images_for_readme/100.PNG)
+  <br/><br/>
+  <strong> Tips to improve mode's accuracy </strong>
+  - Check if each class has overlapped features, go back to step no.5.
+  - Increase the datasets.
+  - decrease batch size.
+  - Epoch should not be more than 80 for smaller datasets
   <br/><br/><br/><br/>
 ## Deployment
   <strong> 1. On the left tab, navigate to Deployment and change deployment option to Arduino library. </strong>
