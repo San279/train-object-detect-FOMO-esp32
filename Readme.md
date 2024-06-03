@@ -16,8 +16,7 @@
   1. Collecting data from Esp32 can be a tediuos. Luckily, you can download and run the scripted that I've created [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) or use Webcam interface in Edge impulse.
      <br/>
   - The best results of this network is obtained atleast 70 images per class and 10% of background(other) images. To put in perspective, training a model to count 2 fingers requires 70 images of one, another 70 images of two, and atleast 20-30 images of other fingers or object look alike.
-    <br/>
-  - Images should has equal width and height otherwise it's width will be crop off when uploading to Edge Impulse. Here is snapshot of [webserver](https://github.com/San279/camera-webserver-for-esp32S3) used for data collections. Each images is 96X96 in dimension. 
+  - Images should has equal width and height otherwise it's width will be crop off when uploading to Edge Impulse. Here is snapshot of [webserver](https://github.com/San279/camera-webserver-for-esp32S3) used for data collections. Each images is 96 X 96 in dimension. 
 <br/> <br/>   
   ![alt text](/Images_for_readme/webserver.PNG)
 <br/> <br/> <br/>
@@ -68,7 +67,9 @@
  <br/> <br/>
  ![alt text](/Images_for_readme/feature_edited.PNG)
 <br/><br/> <br/>
-
+6. On the left panel select Object detection. These are the settings that can be customized.
+  - Traning cycles indicates the number of epoch the model will go through, I've found that it is trivial to set it more than 80.
+  - 
 <br/><br/> <br/>
 ## Deployment
   <strong> 1. On the left tab, navigate to Deployment and change deployment option to Arduino library. </strong>
