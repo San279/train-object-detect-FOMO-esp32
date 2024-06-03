@@ -46,7 +46,7 @@
     <br/>
     - FOMO reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame.
     <br/>
-    * Experiment with this feature as you will, I will be using 96 width and 96 height.
+    - 96 X 96 will be used for this project.
  <br/> <br/>
  ![alt text](/Images_for_readme/input_size.PNG)
 <br/> <br/>
