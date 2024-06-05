@@ -1,12 +1,12 @@
 
 ## วิธีการฝึก FOMO AI ตรวจจับวัตถุโดยใช้ Edge Impulse
-  [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) คือ AI ตรวจจับวัตถุที่ถูกพัฒนาสำหรับไมโครคอนโทรลเลอร์มที่มีเสป็คค่อนข้างจำกัด อย่างเช่น Esp32-S3 เป็นต้น โดยให้ข้อแนะนำต่างๆ สำหรับการรวบรวมรูปภาพ การฝึก AI และการนำโมเดลไปรันบน Esp32-S3.  
+  [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) คือ AI ตรวจจับวัตถุที่ถูกพัฒนาสำหรับไมโครคอนโทรลเลอร์มที่มีเสป็คค่อนข้างจำกัด อย่างเช่น Esp32-S3 เป็นต้น โดยให้ข้อแนะนำต่างๆ สำหรับการรวบรวมรูปภาพ การฝึก AI และการนำโมเดลไปรันบน Esp32-S3 ใน Arduino
 <br/>
 ## สิงที่ต้องมีสำหรับโปรเจ็ค
- - AIOT บอร์ด Esp32-S3 หรือ Esp32 ที่มี PSRAM.
- - กล้อง OV 2640.
- - กล้องเว็ปแคม (ไม่จำเป็น).
- - บัญชีผู้ใช้ Edge Impulse account.
+ - AIOT บอร์ด Esp32-S3 หรือ Esp32 ที่มี PSRAM
+ - กล้อง OV 2640
+ - กล้องเว็ปแคมหรือมือถือ (ไม่จำเป็น)
+ - บัญชีผู้ใช้ Edge Impulse
 <br/> <br/>
 ## ก่อนเริ่ม
   <strong> สร้างบัญชีใน Edge Impulse และกด create new project เพื่อสร้างโปรเจ็คใหม่. </strong> 
@@ -61,47 +61,47 @@
 <br/>  <br/>
  ![alt text](/Images_for_readme/rgb.PNG)
 <br/> <br/>
-<strong> 5. กดไปตรง generate feature เพื่อเช็คความคลึงทางสีของรูปภาพเราทั้งหมด โดยใช้ K-nearest neighbor Algorithm. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be deleted. </strong>
+<strong> 4. กดไปตรง generate feature เพื่อโชว์กราฟของความใกล้เคลี่ยงของรูปภาพเราทั้งหมด ด้วย K-nearest neighbor Algorithm จุดสีแดงคือนิ้วเดี่ยว ส่วน จุดสีชมพูคือสองนิ้ว โดยถ้าจะให้โมเดลของเรามีความแม่นยำ วัตถุแต่ละประเภทจะต้องอยู่แยกกัน แต่ตรงที่ผมวงใว้คือรูปที่โมเดลไม่สามารถแยกความแตกต่างกันได้ เนื่องจากรูปของสองวัตถุคล้ายกันเกินไป ในเคสแบบนี่เราต้องลบรูปส่วนนั้นออกไปและอัพโหลดรูปใหม่โดยการปรับแสงไฟ หรือ พื้นหลังให้มีความต่างกันมากขึ้น </strong>
 <br/><br/>
  ![alt text](/Images_for_readme/feature_unedit.PNG)
 <br/> <br/>
-- After deleting and adding more images, the two classes should be seperated like this.
+- ตอนนี้โมเดลจะสามารถแยกแยะได้เพราะรูปแต่ละประเภทนั้นไม่ได้อยุใกล้กัน
  <br/> <br/>
  ![alt text](/Images_for_readme/feature_edited.PNG)
 <br/><br/> <br/>
-<strong> 6. On the left panel select Object detection. These are the settings that can be customized. </strong>
-  - Traning cycles indicates the number of epoch the model will go through, I've found that it is trivial to set it more than 80. I will be using 25 cycles for this project.
-  - Data augentation, multiplies amount of your dataset significantly. leave this on as default.
-  - Learning rate, determines how fast the model learn the features, this is best leave as just it is.
-  - Validation set size, also best to leave this as default as well.
-  - batch size, determines samples that will be propagated through the traning process e.g. if it's set 8 then the model will train on 1-8 images, then on the next cycle it will go through 9-16 and so forth. Batch size should be in the power of 2^n, e.g. 4, 8, 16, 32, 64, and etc. I've found that on small datasets 8 and 16 yield the best result. The batch size of 8 will be used for this project. 
+<strong> 5. กดไปที่ Object detection ในช้องด้านซ้าย เราจะเห็นค่าต่างๆ ที่ใช้ในการเทรน AI </strong>
+  - Traning cycles คือจำนวน Step ที่โมเดลทำการเทรนนิ่ง ในส่วนนี่ อย่าปรับเกิน 70 เนื่องจากไม่ค่อยมีผล ส่วนในโมเดลนับนิ้ว เราจะใช้เพียงแค่ 25 ครั้ง
+  - Data augmentation คือการคูณรูปภาพของเราให้มีจำนวนมากกขึ้น โดนแต่ละรูปจะมีการปรับแสง พลิก เปลี่ยนมุม ๆลๆ ส่วนนี่จำเป็นต้องเปิดใว้เนื่องจากเรามีแค่ 170 รูป
+  - Learning rate ควบุคมความเร็วที่โมเดลเราจะเรียน feature ต่างๆ ในทุก step ของ training cycles สามารถอ่านเพื่มเติมได้ใน [mindphp](https://www.mindphp.com/%E0%B8%9A%E0%B8%97%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%AD%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%A5%E0%B8%99%E0%B9%8C/python-tensorflow/8491-what-is-the-learning-rate.html) สำหรับโปรเจ็คนี่เราจะทิ้งค่าเดิมของมันใว้ที่ 0.001
+  - Validation set size แบ่งเป็นเปอร์เซ็น ในส่วนนี่หลังจากทุกๆ traning cycle โมเดลของเราจะทำการทดสอบความแม่นยำของแต่ละวัตถุ ควรปล่อยใว้ที่ค่าเดิมของมัน
+  - batch size คือจำนวนรูปที่โมเดลของเราจะทำการเทรนในทุกๆ traning cycle ยกตัวอย่างเช่น เราเซ็ทค่าใว้ที่ 8 โมเดลของเราจะเทรนรูปที่ 1 - 8 และใน cycle ต่อไป จะทำการเทรน รูปที 9 - 16 โดยค่าของ Batch size ควรอยู่ในผลคูณของ 2^n เช่น 2, 4, 8, 16, 32, 64, และ ๆลๆ ยิ่งเราเซ็ทค่า batch size สูง เวลาการใช้เทรนนิ่งก้จะมากขึ้นเช่นกัน ส่วนตัวแล้วสำหรับ dataset เพียงแค่ 170 รูป batch size ที่แนะนำคือ 8 16 หรือ 32 สำหรับโมเดลนี่เราจะเซ็ทใว้ที่ 8 
 <br/><br/>
  ![alt text](/Images_for_readme/best_setting.PNG)
 <br/><br/>
-  - Choose the model, as of now, only two FOMO models are avaiable. I will be using FOMO 0.35 for this project.
+  - เรามีสองตัวเลือกของ FOMO ในส่วน alpha 0.35 หรือ 0.1 เราจะใช้โมเดล FOMO 0.35
 <br/><br/>
    ![alt text](/Images_for_readme/model_choice.PNG)
 <br/><br/>
-  - Start traning the model, this process might takes up to 20 minutes.
+  - กด start training เพื่อเริ่มการเทรนโมเดลเรา
      <br/><br/>
    ![alt text](/Images_for_readme/100.PNG)
   <br/><br/>
-  <strong> Tips to improve mode's accuracy </strong>
-  - Check if each class has overlapped features, go back to step no.5.
-  - Increase the datasets.
-  - decrease batch size.
-  - Epoch should not be more than 80 for smaller datasets
+  <strong> เทคนอคในการปรับความแม่นยำของโมเดลเรา </strong>
+  - เช็คว่าแต่ละรูปนั้นมีความคล้ายคลึงกันเกินไปไหม ในเสต็ปที่ 4
+  - เพิ่มจำนวนรูป
+  - ลดจำนวน batch size
+  - เพิ่ม traning cycles ไม่ควรเกิน 80
   <br/><br/><br/><br/>
 ## Deployment
-  <strong> 1. On the left tab, navigate to Deployment and change deployment option to Arduino library. </strong>
+  <strong> 1. ในช่องก้านซ่ายให้กดไปที่ deployment และเลือก change deployment เป็น Arduino library. </strong>
     <br/> <br/>
    ![alt text](/Images_for_readme/deployment1.PNG)
    <br/><br/><br/>
-  <strong> 2. Change target option to Esp32. </strong>
+  <strong> 2. กดไปที่ change target option และเลือก Esp32. </strong>
    <br/> <br/>
    ![alt text](/Images_for_readme/deployment2.PNG)
    <br/> <br/><br/>
-  <strong> 3. Click on Build to start downloading the library, and you're done. I've created two libraries for testing the model in real time, please visit [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) for streaming inference result or [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) for displaying inference results to TFT screens. </strong>
+  <strong> 3. กด Build เพื่อโหลดโมเดล เราจะได้มาเป็น zip file เพื่อไปใช้บน Arduino ในส่วนของการเทสผมมีสอง library ให้เลือก [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) สำหรับการ Stream โมเดลเราขึ้นเว็ป หรือ [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) สำหรับการแสดงผลของโมเดลเราบนจอ TFT ของ AIOT </strong>
 
 ## Credit
-Thanks to [WIRELESS SOLUTION ASIA CO.,LTD](https://wirelesssolution.asia/) for providing AIOT board to support this project. Also thanks to [Bodmer / TFT_eSPI](https://github.com/Bodmer/TFT_eSPI/blob/master/README.md) for the TFT libraries. Scripted used for Esp32 FOMO object detection inferencing were provided by [Edge Impulse](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices). 
+ต้องขอขอบคุณ [WIRELESS SOLUTION ASIA CO.,LTD](https://wirelesssolution.asia/) สำหรับ AIOT board และ support ในโปรเจ็คนี่ และ [Bodmer / TFT_eSPI](https://github.com/Bodmer/TFT_eSPI/blob/master/README.md) สำหรับ library จอ TFT. Scripted used for Esp32 FOMO object detection inferencing were provided by [Edge Impulse](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices). 
