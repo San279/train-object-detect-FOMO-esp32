@@ -5,7 +5,7 @@
 <br/>
 ## What you'll need
  - AIOT, Esp32S3 or any Esp32 series.
- - OV camera series.
+ - OV2640.
  - Webcam (optional).
  - Edge Impulse account(free).
 <br/> <br/>
