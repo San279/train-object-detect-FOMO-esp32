@@ -1,6 +1,6 @@
 ## Guide to training FOMO object detection model in Edge Impulse
   For Thai language use this [link](https://github.com/San279/train-FOMO-object-detect-esp32/blob/main/Readme-th.md)
-  <br/>
+  <br/><br/>
   [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) is a object detection model designed for constrained device. Due to it's low foot print and memory requirement, this model is highly suitable for AIOT box or Esp32-S3. This repository will provide simple tips for building a FOMO model in Edge Impulse, including data collection, training, and deployment.   
 <br/>
 ## What you'll need
