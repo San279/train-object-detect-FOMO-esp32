@@ -32,7 +32,7 @@
   <br/> <br/> 
 ![alt text](/Images_for_readme/object_detection_tab..PNG)
   <br/> <br/>  <br/> <br/> 
-## Training
+## การเทรนนิ่ง
   <strong> 1. หลังอัพโหลดรูปภาพเรียบร้อยแล้ว กดตรง labeling queue และให้วาดกล่องกับชื่อวัตถุที่จะกำหนดให้ AI ตรวจจับให้กับทุกๆรูป และกด save label สำหรับรูปพื้นหลังหรือวัตถุอืนๆ ให้เรากด save label โดยไม่ต้องวาด </strong>
      <br/> <br/>
 ตัวอย่างของรูปที่มีมิติที่ต่างกัน 320 X 240 เราจะเห็นสีทึบในทั้งสองฝั่งของรูป ซึ่งส่วนนั้นจะถูกตัดออกไป 
@@ -92,7 +92,7 @@
   - ลดจำนวน batch size
   - เพิ่ม traning cycles ไม่ควรเกิน 80
   <br/><br/><br/><br/>
-## Deployment
+## การ build โปรเจ็คสำหรับ Arduino
   <strong> 1. ในช่องก้านซ่ายให้กดไปที่ deployment และเลือก change deployment เป็น Arduino library. </strong>
     <br/> <br/>
    ![alt text](/Images_for_readme/deployment1.PNG)
@@ -104,4 +104,4 @@
   <strong> 3. กด Build เพื่อโหลดโมเดล เราจะได้มาเป็น zip file เพื่อไปใช้บน Arduino ในส่วนของการเทสผมมีสอง library ให้เลือก [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) สำหรับการ Stream โมเดลเราขึ้นเว็ป หรือ [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) สำหรับการแสดงผลของโมเดลเราบนจอ TFT ของ AIOT </strong>
 
 ## Credit
-ต้องขอขอบคุณ [WIRELESS SOLUTION ASIA CO.,LTD](https://wirelesssolution.asia/) สำหรับ AIOT board และ support ในโปรเจ็คนี่ และ [Bodmer / TFT_eSPI](https://github.com/Bodmer/TFT_eSPI/blob/master/README.md) สำหรับ library จอ TFT. Scripted used for Esp32 FOMO object detection inferencing were provided by [Edge Impulse](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices). 
+ต้องขอขอบคุณ [WIRELESS SOLUTION ASIA CO.,LTD](https://wirelesssolution.asia/) สำหรับ AIOT board และ support ในโปรเจ็คนี่ และ [Bodmer / TFT_eSPI](https://github.com/Bodmer/TFT_eSPI/blob/master/README.md) สำหรับ library จอ TFT และสกริปสำหรับการรัน FOMO จาก [Edge Impulse](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices). 
