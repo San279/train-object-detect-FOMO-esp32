@@ -16,7 +16,7 @@
 ## การรวบรวมรูปภาพ
   <strong> 1. เรามีสองวิธีให้เลือกในการเก็บและรวบรวมรูปภาพสำหรับฝึก AI บน Edge Impulse วิธีแรกคือเก็บรูปภาพจากกล้อง Esp32 โดยตรง โดยใช้ [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) การรวบรวมรูปภาพแบบวิธีนี้จะทำให้ AI มีความแม่นยำมากกว่า หรือวิธีที่สองคือใช้กล้องโทรศัพย์หรือกล้องเว็ปแคมจากคอมพิวเตอร์ของเรา. </strong>
      <br/>
-  - เราควรกำหนดรูปภาพให้มีอย่างน้อย 70 รูปต่อวัตถุ และ 10% ของรูปภาพทั้งหมดให้เป็นภาพพื้นหลัง หรือวัตถุอื่นๆ ที่มีความคล้ายเคลียงกับวัตถุของเรา ยกตัวอย่างเช่น การฝึกโมเดล ให้นับนิ้วมือนั้น เราจะกำหนด 2 วัตถุ คือหนึ่งนิ้ว กับ สองนิ้ว โดยนิ้วเดี่ยวจะต้องมี 70 รูป และสองนิ้วจะต้องมีอีก 70 รูปภาพ และในส่วนของภาพพิ้นหลังนั้น เราจะรวบรวมภาพรูปภาพอื่นๆ เช่น ภาพพื้นหลัง สามนิ้ว สี่นิ้ว ปากกา เป็นต้น โดยใช้ 20-30 รูปภาพ
+  - เราควรกำหนดรูปภาพให้มีอย่างน้อย 70 รูปต่อวัตถุ และ 10% ของรูปภาพทั้งหมดให้เป็นภาพพื้นหลัง หรือวัตถุอื่นๆ ยกตัวอย่างเช่น การฝึกโมเดล ให้นับนิ้วมือนั้น เราจะกำหนด 2 วัตถุ คือหนึ่งนิ้ว กับ สองนิ้ว โดยนิ้วเดี่ยวจะต้องมี 70 รูป และสองนิ้วจะต้องมีอีก 70 รูปภาพ และในส่วนของภาพพิ้นหลังนั้น เราจะรวบรวมภาพรูปภาพอื่นๆ เช่น ภาพพื้นหลัง สามนิ้ว สี่นิ้ว ปากกา เป็นต้น โดยใช้ 20-30 รูปภาพ
   - เพื่อให้โมเดลของเรามีความแม่นยำสูง รูปของวัตถุที่ให้ AI ตรวจจับนั้นควรมีพื้นหลัง หรือ การจัดไฟที่ต่างกันอย่างน้อย 2 รูปแบบ
   - แต่ละรูปควรมีมิติ สูง X ยาวที่เหมือนกัน เนื่องจาก Edge Impulse จะตัดส่วนความยาวของรุปให้เท่ากับความสูง ซึ่งอาจจะตัดส่วนสำคัญต่างๆ ของวัตถุนั้นออกไป สำหรับโมเดลตัวนับนิ้วมือ ผมใช้รูปที่มีมิติ 96 X 96 โดยปรับกล้อง Esp32 ใน [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3)
 <br/> <br/>   
@@ -33,7 +33,7 @@
 ![alt text](/Images_for_readme/object_detection_tab..PNG)
   <br/> <br/>  <br/> <br/> 
 ## Training
-  <strong> 1. หลังอัพโหลดรูปภาพเรียบร้อยแล้ว กดตรง labeling queue และให้วาดกล่องกับชื่อวัตถุที่จะกำหนดให้ AI ตรวจจับ รูปที่มีมิติความยาวกับความสูงที่ต่างกันจะถูกตัดออกให้มีมิติที่เท่ากัน </strong>
+  <strong> 1. หลังอัพโหลดรูปภาพเรียบร้อยแล้ว กดตรง labeling queue และให้วาดกล่องกับชื่อวัตถุที่จะกำหนดให้ AI ตรวจจับให้กับทุกๆรูป และกด save label สำหรับรูปพื้นหลังหรือวัตถุอืนๆ ให้เรากด save label โดยไม่ต้องวาด </strong>
      <br/> <br/>
 ตัวอย่างของรูปที่มีมิติที่ต่างกัน 320 X 240 เราจะเห็นสีทึบในทั้งสองฝั่งของรูป ซึ่งส่วนนั้นจะถูกตัดออกไป 
  <br/> <br/>
@@ -53,17 +53,15 @@
 <br/> <br/>
  ![alt text](/Images_for_readme/add_processing.PNG)
 <br/><br/>
-หลังจากนั้นกดไป add learning block and select the first option, then save the impulse.
+หลังจากนั้นกดไป add learning block และเลือกตัวบนสุด จากนั้นให้กดไปที่ save impulse
  <br/> <br/>
  ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
-<strong> 4. After saving the impulse you will be directed to a new section. In this section, you can choose whether images will be train in Grayscale or RGB feature. I've left it as RGB for this project. Click on save parameters to proceed. </strong>
+<strong> 3. หลังจากสร้าง impulse ของเราแล้ว เราสามารถกำหนดการเทรน AI โดยจะใช้รูปแบบ ขาวดำ(Gray Scale) หรือ สี(RGB) สำหรับโมเดลนี้เราจะใช้ รูปแบบเป็น สี(RGB) พอเลือกเสร็จให้กดไปที่ save parameters </strong>
 <br/>  <br/>
  ![alt text](/Images_for_readme/rgb.PNG)
 <br/> <br/>
- After selecting the features, the page will direct you to generate feature tab, <strong> click on generate feature and you will see the graph on the right side of the page. </strong>
-<br/> <br/>
-<strong> 5. This graph uses K-nearest neibors algorithm to represented the similarities between each images. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be deleted. </strong>
+<strong> 5. กดไปตรง generate feature เพื่อเช็คความคลึงทางสีของรูปภาพเราทั้งหมด โดยใช้ K-nearest neighbor Algorithm. Notice that red dot represent finger no.1 and pink represent finger no.2. If two classes are too close to each other like the ones I've circled, the object detection model will have problems distinguish between two classes which will greatly reduce the accuracy. Thus images that overlaped has to be deleted. </strong>
 <br/><br/>
  ![alt text](/Images_for_readme/feature_unedit.PNG)
 <br/> <br/>
