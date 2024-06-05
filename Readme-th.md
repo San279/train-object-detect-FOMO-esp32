@@ -1,58 +1,59 @@
 
 ## วิธีการฝึก FOMO AI ตรวจจับวัตถุโดยใช้ Edge Impulse
-  [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) คือ AI ตรวจจับวัตถุที่ถูกพัฒนาสำหรับไมโครคอนโทรลเลอร์มที่มีเสป็คค่อนข้างจำกัด อย่างเช่น Esp32-S3 เป็นต้น โดยให้ข้อแนะนำต่างๆ สำหรับการรวบรวมรูปภาพ และการนำโมเดลไปรันบน Esp32-S3.  
+  [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) คือ AI ตรวจจับวัตถุที่ถูกพัฒนาสำหรับไมโครคอนโทรลเลอร์มที่มีเสป็คค่อนข้างจำกัด อย่างเช่น Esp32-S3 เป็นต้น โดยให้ข้อแนะนำต่างๆ สำหรับการรวบรวมรูปภาพ การฝึก AI และการนำโมเดลไปรันบน Esp32-S3.  
 <br/>
-## สิงที่ต้องการสำหรับโปรเจ็ค
+## สิงที่ต้องมีสำหรับโปรเจ็ค
  - AIOT บอร์ด Esp32-S3 หรือ Esp32 ที่มี PSRAM.
  - กล้อง OV 2640.
  - กล้องเว็ปแคม (ไม่จำเป็น).
  - บัญชีผู้ใช้ Edge Impulse account.
 <br/> <br/>
 ## ก่อนเริ่ม
-  <strong> สมัครบัญชีของ Edge Impulse ฟรีไม่มีค่าใช้จ่าย. </strong> 
+  <strong> สร้างบัญชีใน Edge Impulse และกด create new project เพื่อสร้างโปรเจ็คใหม่. </strong> 
   <br/> <br/>
   ![alt text](/Images_for_readme/create_new_project.PNG)
 <br/>
-## Data collection
-  <strong> 1. Collecting data from Esp32 can be a tediuos. Luckily, you can download and run the scripted that I've created [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) or use Webcam interface in Edge impulse. </strong>
+## การรวบรวมรูปภาพ
+  <strong> 1. เรามีสองวิธีให้เลือกในการเก็บและรวบรวมรูปภาพสำหรับฝึก AI บน Edge Impulse วิธีแรกคือเก็บรูปภาพจากกล้อง Esp32 โดยตรง โดยใช้ [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3) การรวบรวมรูปภาพแบบวิธีนี้จะทำให้ AI มีความแม่นยำมากกว่า หรือวิธีที่สองคือใช้กล้องโทรศัพย์หรือกล้องเว็ปแคมจากคอมพิวเตอร์ของเรา. </strong>
      <br/>
-  - The best results of this network is obtained atleast 70 images per class and 10% of background(other) images. To put in perspective, training a model to count 2 fingers requires 70 images of one, another 70 images of two, and atleast 20-30 images of other fingers or object look alike.
-  - Images should has equal width and height otherwise it's width will be crop off when uploading to Edge Impulse. Here is snapshot of [webserver](https://github.com/San279/camera-webserver-for-esp32S3) used for data collections. Each images is 96 X 96 in dimension. 
+  - เราควรกำหนดรูปภาพให้มีอย่างน้อย 70 รูปต่อวัตถุ และ 10% ของรูปภาพทั้งหมดให้เป็นภาพพื้นหลัง หรือวัตถุอื่นๆ ที่มีความคล้ายเคลียงกับวัตถุของเรา ยกตัวอย่างเช่น การฝึกโมเดล ให้นับนิ้วมือนั้น เราจะกำหนด 2 วัตถุ คือหนึ่งนิ้ว กับ สองนิ้ว โดยนิ้วเดี่ยวจะต้องมี 70 รูป และสองนิ้วจะต้องมีอีก 70 รูปภาพ และในส่วนของภาพพิ้นหลังนั้น เราจะรวบรวมภาพรูปภาพอื่นๆ เช่น ภาพพื้นหลัง สามนิ้ว สี่นิ้ว ปากกา เป็นต้น โดยใช้ 20-30 รูปภาพ
+  - เพื่อให้โมเดลของเรามีความแม่นยำสูง รูปของวัตถุที่ให้ AI ตรวจจับนั้นควรมีพื้นหลัง หรือ การจัดไฟที่ต่างกันอย่างน้อย 2 รูปแบบ
+  - แต่ละรูปควรมีมิติ สูง X ยาวที่เหมือนกัน เนื่องจาก Edge Impulse จะตัดส่วนความยาวของรุปให้เท่ากับความสูง ซึ่งอาจจะตัดส่วนสำคัญต่างๆ ของวัตถุนั้นออกไป สำหรับโมเดลตัวนับนิ้วมือ ผมใช้รูปที่มีมิติ 96 X 96 โดยปรับกล้อง Esp32 ใน [camera-webserver-for-esp32S3](https://github.com/San279/camera-webserver-for-esp32S3)
 <br/> <br/>   
   ![alt text](/Images_for_readme/webserver.PNG)
 <br/> <br/> <br/>
- <strong>2. On the left tab, go to data aquisition, and upload images to Edge Impulse</strong>
+ <strong>2. ในช่องด้านซ้าย กดไปตรง data aquisition และเลือก upload images เพื่ออัพโหลดรูปภาพขึ้นบน Edge Impulse</strong>
  <br/> <br/> 
  ![alt text](/Images_for_readme/add_data.PNG)
   <br/> <br/>
 ![alt text](/Images_for_readme/upload_data.PNG)
   <br/> <br/> <br/> 
- <strong>3. Click yes for object Detection </strong>
+ <strong>3. ระหว่างการอัพโหลดนั้นจะมีตัวเลือกสำหรับการเทรน AI ตรวจจับวัตถุ ให้เรากด yes</strong>
   <br/> <br/> 
 ![alt text](/Images_for_readme/object_detection_tab..PNG)
   <br/> <br/>  <br/> <br/> 
 ## Training
-  <strong> 1. On the top of the page, navigate to labeling queue and add label to each images. Keep in mind that images with non equal dimension will be crop off during this process, which is why I've equal image dimension. </strong>
+  <strong> 1. หลังอัพโหลดรูปภาพเรียบร้อยแล้ว กดตรง labeling queue และให้วาดกล่องกับชื่อวัตถุที่จะกำหนดให้ AI ตรวจจับ รูปที่มีมิติความยาวกับความสูงที่ต่างกันจะถูกตัดออกให้มีมิติที่เท่ากัน </strong>
      <br/> <br/>
-Images with non equal dimension 320 X 240, notice the black shade on each sides of the image indicates that those parts will be crop off.
+ตัวอย่างของรูปที่มีมิติที่ต่างกัน 320 X 240 เราจะเห็นสีทึบในทั้งสองฝั่งของรูป ซึ่งส่วนนั้นจะถูกตัดออกไป 
  <br/> <br/>
    ![alt text](/Images_for_readme/label_320.PNG)
     <br/> <br/>
-   Images with equal dimension 96 X 96.
+ตัวอย่างของรูปที่ใช้ในโปรเจ็คนี่ มิติเท่ากัน 96 X 96 จะไม่ถูกปรับเปลี่ยน
   <br/> <br/>
    ![alt text](/Images_for_readme/label_96.PNG)
 <br/> <br/> <br/>
- <strong> 2. After labeling all images, navigate to Impulse design on the left and click on Create impulse. This will take you to a page where you can choose the size of the input model and resizing mode. </strong>
+ <strong> 2. หลังจากกำหนดวัตถุของเราเรียบร้อยแล้ว ให้กดไปที่ Create impulse ในช่องด้านซ้าย ในพาร์ทนี่เราสามารถกำหนดขนาดของโมเดลเรา โดยขนาดนั้นจะต้องอยู่ในผลคูณของ 8 </strong>
     <br/><br/>
-    - Edge Impulse reccomends the size of the model should be in multiple of 8. The higher the input size, the slower the network for inferencing. But higher size has advantage of detecting multiple objects if it's presented in the frame.
+    - เราสามารถกำหนดขนาดของโมเดลให้ใหญ่กว่าหรือเล็กกว่ารูปเราก้ได้ โดยจะมีข้อดีกับข้อเสียที่ตรงกันข้าม ในโมเดลใหญ่ ข้อดีคือความแม่นยำอาจจะสูงกว่า แต่จะใช้เวลาในการตรวจจับค่อนข้างนาน เมื่อเทียบกับโมเดลที่เล็กกว่า แต่ความแม่นยำน้อยกว่า สำหรับโมเดลนับนิ้วมือ เรากำหนดที่ 96 X 96 ขนาดเท่ารูปของเรา เพราะโมเดลนี่ไม่ได้มีอะไรที่ซับซ้อนมากนัก 
  <br/> <br/>
  ![alt text](/Images_for_readme/input_size.PNG)
 <br/> <br/>
-Click on add a processing block and select the only option.
+กดไปตรง add processing block และเลือกตัวบนสุด
 <br/> <br/>
  ![alt text](/Images_for_readme/add_processing.PNG)
 <br/><br/>
-Click on add learning block and select the first option, then save the impulse.
+หลังจากนั้นกดไป add learning block and select the first option, then save the impulse.
  <br/> <br/>
  ![alt text](/Images_for_readme/learning_block.PNG)
 <br/><br/> <br/>
