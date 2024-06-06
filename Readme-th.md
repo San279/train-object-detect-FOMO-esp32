@@ -10,7 +10,7 @@
  - กล้อง OV 2640
  - กล้องเว็ปแคมหรือมือถือ (ไม่จำเป็น)
  - บัญชีผู้ใช้ Edge Impulse
-<br/> <br/>
+<br/>
 ## ก่อนเริ่ม
   <strong> สร้างบัญชีใน Edge Impulse และกด create new project เพื่อสร้างโปรเจ็คใหม่. </strong> 
   <br/> <br/>
