@@ -103,7 +103,9 @@ Click on add learning block and select the first option, then save the impulse.
    <br/> <br/>
    ![alt text](/Images_for_readme/deployment2.PNG)
    <br/> <br/><br/>
-  <strong> 3. Click on Build to start downloading the library, and you're done. I've created two libraries for testing the model in real time, please visit [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) for streaming inference result or [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) for displaying inference results to TFT screens. </strong>
+  <strong> 3. Click on Build to start downloading the library, and you're done. </strong>
+  <br/> <br/>
+  I've created two libraries for testing the model in real time, please visit [FOMO-object-detect-stream-Esp32](https://github.com/San279/FOMO-object-detect-stream-Esp32) for webserver platform or [FOMO-object-detect-TFT](https://github.com/San279/FOMO-object-detect-stream-Esp32) for display on TFT screens.
 
 ## Credit
 Thanks to [WIRELESS SOLUTION ASIA CO.,LTD](https://wirelesssolution.asia/) for providing AIOT board to support this project. Also thanks to [Bodmer / TFT_eSPI](https://github.com/Bodmer/TFT_eSPI/blob/master/README.md) for the TFT libraries. Scripted used for Esp32 FOMO object detection inferencing were provided by [Edge Impulse](https://edge-impulse.gitbook.io/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices). 
