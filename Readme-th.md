@@ -3,7 +3,7 @@
  [For English version](https://github.com/San279/train-FOMO-object-detect-esp32/blob/main/Readme.md)
  <br/>
  <br/>
-  [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) คือ AI ตรวจจับวัตถุที่เหมาะสำหรับไมโครคอนโทรลเลอร์มที่มีเสป็คที่จำกัด ในโปรเจ็คนี่เราจะทำการเทรน AI ให้นับสองนิ้ว โดยให้ข้อแนะนำต่างๆ ในการรวบรวมรูปภาพจากกล้อง การฝึก AI และการนำโมเดลไปรันบน Esp32-S3 ใน Arduino
+  [FOMO](https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-for-constrained-devices) คือ AI ตรวจจับวัตถุที่เหมาะสำหรับไมโครคอนโทรลเลอร์มที่มีเสป็คที่จำกัด ในโปรเจ็คนี่เราจะทำการเทรน AI ให้นับสองนิ้ว โดยให้ข้อแนะนำต่างๆ ในการรวบรวมรูปภาพจากกล้อง การฝึก AI และการนำโมเดลไปรันบน Esp32-S3 ด้วย Arduino IDE
 <br/>
 ## สิงที่ต้องมีสำหรับโปรเจ็ค
  - AIoT บอร์ด Esp32-S3 หรือ Esp32 ที่มี PSRAM
